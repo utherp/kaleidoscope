@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sign window test</title>
+        <link rel='stylesheet' type='text/css' href='css/base.css' />
+
+        <!-- load jQuery -->
+        <script type='text/javascript' src='js/jquery.js'></script>
+        <!-- load various easing functions for transistions -->
+        <script type='text/javascript' src='js/easing.js'></script>
+        <!-- load the sequencer library -->
+        <script type='text/javascript' src='js/timer.js'></script>
+        <!-- load the 'window' library -->
+        <script type='text/javascript' src='js/window.js'></script>
+        <!-- load the template library -->
+        <script type='text/javascript' src='js/tmpl.js'></script>
+        <script type='text/javascript'>
+
+            /* load_updates cycles through the template updates every 5 seconds */
+			var update_idx = 0;
+			function load_updates () {
+				if (update_idx == 0) {
+					update_idx++;
+					setTimeout(function () { Tmpl('templates/update_1.xml').bind(load_updates); return true; }, 250);
+					return true;
+				} else update_idx++;
+				if (update_idx > 4) update_idx = 1;
+				Tmpl('templates/update_' + update_idx + '.xml').bind(function () { setTimeout(load_updates, 5000); return true; });
+				return true;
+			}
+
+            /* initializes the test page */
+            function init () {
+                // parses the GET parameters from the location
+                var prmstr = window.location.search.substr(1);
+                var prmarr = prmstr.split ("&");
+                var params = {};
+                for ( var i = 0; i < prmarr.length; i++) {
+                    var tmparr = prmarr[i].split("=");
+                    params[tmparr[0]] = tmparr[1];
+                }
+
+                // sets the template name from the GET paramters (or demo as default)
+                var xmldoc = './templates/';
+                if (params.xml) xmldoc += params.xml + '.xml';
+                else xmldoc += 'demo.xml';
+
+				var updated = false;
+
+				Tmpl.handler('window', function (tmpl) {
+					var p = false;
+					if (tmpl.parent) {
+						p = Window(tmpl.parent);
+						delete tmpl.parent;
+					}
+                    var win = Window(tmpl);
+					if (p) p.append(win, false);
+					else {
+						$('#container').append(win.elem);
+	                    win.enable();
+					}
+					load_updates();
+				});
+
+				Tmpl.handler('update', function (tmpls) {
+					if (!(tmpls instanceof Array)) tmpls = [tmpls];
+					for (var i = 0; i < tmpls.length; i++) {
+						var tmpl = tmpls[i];
+						var match = Window(tmpl.name);
+						if (!match) return;
+						match.set(tmpl.value);
+					}
+
+				});
+
+				Tmpl(xmldoc).bind(function (tmpl) {
+					if (tmpl) {
+						console.log("No handler for tmpl");
+						return;
+					}
+					console.log("finished parsing xml");
+					setTimeout(function () { Window('demo').set('some longer string........'); }, 1000);
+                    setTimeout(function () { Window('bottom image').set('images/pedestrian.png'); }, 6000);
+					return;
+				});
+ 
+
+/*
+                var win = new Window({
+                    x:100, y: 50, z:1,
+                    w:600, h: 300,
+
+                    duration:15000,
+
+                    color:{
+                        'bg':'DarkSlateGray',
+                        'fg':'white'
+                    },
+
+                    border:{ w:2, c:'#FF7F00', m:1 },
+
+                    margin:2,
+
+//                    content:decodeURIComponent(escape("UTF-8 anyone?, \xE3\x83\x95\xE3\x83\xAA\xE3\x83\xBC\xE7\x99\xBE\xE7\xA7\x91\xE4\xBA\x8B\xE5\x85\xB8")),
+                    content:"#", //.-=*#*=-..-=*#*=-..-=*#*=-..-=*#*=-..-=*#*=-..-=*#*=-..-=*#*=-..-=*#*=-..-=*#*=-..-=*#*=-.%%%.-=*#*=-..-=*#*=-..-=*#*=-..-=*#*=-..-=*#*=-..-=*#*=-..-=*#*=-..-=*#*=-..-=*#*=-..-=*#*=-.",
+
+                    effects:[ 
+                        { 
+                            inherit:'scroll in left',
+							offset:'0%',
+                            duration:'100%',
+							ease:'linear'
+                        },
+                        { 
+                            inherit:'scroll in up',
+							offset:'0%',
+                            duration:'20%',
+							ease:'linear'
+                        } 
+                    ],
+
+                    children:[
+                        {
+                            x:10, y: 5, z:2,
+                            w:100, h:100,
+                            color:{ bg:'blue' },
+                            border:{ w:4, c:'#000000', m:3 },
+                            content:"images/bicycle.png",
+                            offset:1000,
+                            duration:'55%',
+							effects:[
+								{
+									inherit:'grow',
+									offset:'5%',
+									duration:'40%',
+									ease:'easeInBounce'
+								},
+								{
+									inherit:'shrink',
+									offset:'45%',
+									duration:'40%',
+									ease:'easeOutBounce'
+								},
+							]
+                        },
+                        {
+                            x:110, y: 5, z:3,
+                            w:80, h:40,
+
+                            color:{ bg:'red', fg:'DarkGreen' },
+
+                            border:{ w:1, c:'#FFFFFF', m:0 },
+
+                            margin:1,
+
+                            content:"boxA",
+
+                            offset:'50%',
+                            duration:'40%'
+                        },
+                        {
+                            x:-1, y: -1, z:5, w:130, h:95,
+                            color:{ bg:'red' },
+                            border:{ w:1, c:'#FFFFFF', m:0 },
+                            margin:1,
+                            content:"images/bart logo.png",
+                            offset:'25%',
+                            duration:'60%',
+                            children:[
+                                {
+                                    x:-15, y:-15, z:1, w:5, h:5,
+                                    color:{ bg:'purple' },
+                                    offset:'25%',
+                                    duration:'50%'
+                                }
+                            ]
+                        }
+                    ]
+                });
+                document.body.appendChild(win.elem[0]); //elem[0]);
+                win.enable();
+*/
+            }
+        </script>
+    </head>
+    <body onLoad='init();'>
+		<div id=container style='display: block; position:relative; width: 1920px; height: 545px'> </div>
+    </body>
+</html>

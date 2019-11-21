@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window x='0' y='0' width='100%' height='90' margin='1' font-family='fantasy' font-size='3em'>
+
+    <window name='destination' x='0' width='40%' height='100%'>
+        <content type='text' align='left' valign='middle'> </content>
+    </window>
+
+    <window name='cars' x='42%' width='10%' height='100%' align='right' valign='middle'>
+        <content type='text' align='right'> </content>
+    </window>
+    <window x='53%' width='8%' height='100%' align='left' valign='middle'>
+		<content type='text'>Cars</content>
+	</window>
+
+    <window name='line' x='61%' y='10%' width='6%' height='80%' margin='auto'>
+        <content type='style' target='backgroundColor'>black</content>
+    </window>
+
+    <window name='times' x='72%' height='100%' width='28%'>
+		<window name='time[2]' height='100%' x='5%' width='20%'>
+			<content type='text' align='right'> </content>
+		</window>
+		<window name='time[1]' height='100%' x='27%' width='20%'>
+			<content type='text' align='right'> </content>
+		</window>
+		<window name='time[0]' height='100%' x='49%' width='20%'>
+			<content type='text' align='right'> </content>
+		</window>
+		<window x='71%' width='29%' height='100%' align='right'>
+			<content type='text' align='center'>MIN</content>
+		</window>
+    </window>
+</window>

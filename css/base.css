@@ -1,0 +1,108 @@
+body {
+	background-color: black;
+	overflow: hidden;
+	margin: 0 0 0 0;
+}
+
+.windowBox {
+    position: absolute;
+    text-align: center;
+    vertical-align: middle;
+}
+
+div.Window {
+    position: absolute;
+    display: none;
+
+    text-align: center;
+    vertical-align: middle;
+
+    overflow: hidden;
+}
+
+div.active {
+    display: block;
+}
+
+.content {
+    position: relative;
+}
+
+.contentBox {
+	height: 100%;
+	width: 100%;
+	position: absolute;
+}
+
+.contentAlign {
+	position: relative;
+}
+
+.content {
+	width: auto;
+	height: auto;
+}
+
+img.content.image {
+	width: 100%;
+	height: 100%;
+}
+
+.fillWidth .content {
+	height: 100%;
+	width: auto;
+}
+
+.fillHeight .content {
+	width: 100%;
+	height: auto;
+}
+
+.contentBox table {
+	vertical-align: middle;
+	text-align: center;
+    border-collapse: collapse;
+    border-width: 0px;
+    padding: 0px;
+    margin: 0px;
+    position: absolute;
+}
+
+.content * {
+	color: inherit;
+}
+
+.paragraph table.content.text td {
+    text-align: center;
+    vertical-align: middle;
+    line-height: inherit;
+	width: none;
+	height: none;
+	white-space: normal;
+	word-wrap: break-word;
+}
+
+.paragraph table.content {
+	table-layout: fixed;
+	width: 100%;
+	height: 100%;
+}
+
+.content.text td {
+    text-align: center;
+    vertical-align: middle;
+    line-height: inherit;
+	width: none;
+	height: none;
+    white-space: nowrap;
+}
+
+table, tr, td {
+	color: inherit;
+	font-family: inherit;
+	font-size: inherit;
+	font-style: inherit;
+	font-variant: inherit;
+	font-weight: inherit;
+}
+

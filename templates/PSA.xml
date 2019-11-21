@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window name='PSA' width='100%' height='100%'>
+	<font size='7em' />
+	<content type='paragraph' width='100%' align='center' valign='top'>
+		<value>Thank you for riding BART!  Please be aware of your surroundings as you enter and exit the trains</value>
+	</content>
+	<overflow>
+		<effect name='scroll paragraph' offset='0' runtime='10000' gap='2000' >
+			<init><y>0</y></init>
+			<effect name='viewport in up' offset='1000' duration='40%'>
+				<props><y>-(h-H)</y></props>
+			</effect>
+			<effect name='viewport in down' offset='60%' duration='40%'>
+				<props><y>0</y></props>
+			</effect>
+		</effect>
+	</overflow>
+</window>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window name='demo' x="0" y="0" z="1" width="100%" height="100%" margin="0" runtime='10000'> 
+    <color bg="DarkSlateGray" fg="White" />
+
+    <content name='demoContent' type='text' align='center' valign='middle' fontSize="200%" color='blue'>
+        NOTE: this content is encoded UTF-8
+        %E2%83%95%E3%83%AA%E3%83%BC%E7%99%BE%E7%A7%91%E4%BA%8B%E5%85%B8
+    </content>
+
+	<effect name='main fx' duration='100%'>
+		<effect name='left in out' duration='50%'>
+            <effect name='left in' duration='50%'>
+                <effect name='make visible' duration='40%'>
+                    <init><opacity>0</opacity></init>
+                    <props><opacity>1</opacity></props>
+                </effect>
+                <effect name='left scroll to center' duration='80%'>
+                    <init><x>W/2</x><y>-(H/2)</y></init>
+                    <effect name='left scroll in' duration='100%'>
+                        <props><x>0</x></props>
+                    </effect>
+                    <effect name='bounce in'>
+                        <props><y>0</y></props>
+                        <ease>easeOutBounce</ease>
+                    </effect>
+                </effect>
+            </effect>
+            <effect name='left out' duration='50%' offset='50%'>
+                <effect duration='80%' offset='20%'>
+                    <effect name='left scroll out' duration='100%'>
+                        <props><x>-(W/2)</x></props>
+                    </effect>
+                    <effect name='bounce out'>
+                        <props><y>-(H/2)</y></props>
+                    </effect>
+                </effect>
+                <effect name='make invisible' offset='60%' duration='40%'>
+                    <props><opacity>0</opacity></props>
+                </effect>
+            </effect>
+		</effect>
+
+		<effect name='up in out' duration='50%' offset='50%'>
+            <effect name='up in' duration='50%'>
+                <effect name='make visible' duration='40%'>
+                    <init><opacity>0</opacity></init>
+                    <props><opacity>1</opacity></props>
+                </effect>
+                <effect name='up to center' duration='80%'>
+                    <init><x>0</x><y>(H/2)</y></init>
+                    <props><y>0</y></props>
+                </effect>
+            </effect>
+            <effect name='up out' duration='50%' offset='50%'>
+                <effect duration='80%' offset='20%'>
+                    <effect name='up scroll out' duration='100%'>
+                        <props><y>-(H/2)</y></props>
+                    </effect>
+                </effect>
+                <effect name='make invisible' offset='60%' duration='40%'>
+                    <props><opacity>0</opacity></props>
+                </effect>
+            </effect>
+		</effect>
+	</effect>
+
+    <window name='bottom image' offset='2000' x='10' y='10' height='100' align='right' valign='bottom'>
+        <content>images/no smoking.png</content>
+    </window>
+	<window name='eta_box' z='10' width='100%' height='40%' offset='100%'>
+		<color bg='black' fg='white' />
+		<border bottomWidth='2px' bottomColor='rgb(47, 128, 198)' bottomStyle='solid' />
+	    <window name='eta[0]' x='0' y='0' width='100%' height='50%' align='center' valign='middle'>
+	        <content type='tmpl'>templates/etaLine.xml</content>
+	    </window>
+	    <window name='eta[1]' x='0' y='50%' width='100%' height='50%' align='center' valign='middle'>
+	        <content type='tmpl' >templates/etaLine.xml</content>
+	    </window>
+	</window>
+</window>

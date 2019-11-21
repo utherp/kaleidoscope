@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window x="0" y="0" z="1" width="100%" height="100%" duration='86399999' repeat='-1' align='center' valign='middle'>
+    <color bg="DarkSlateGray" fg="White" />
+
+    <content type='text' align='center' valign='middle' fontSize='30px' color='purple'>%E3%83%95%E3%83%AA%E3%83%BC%E7%99%BE%E7%A7%91%E4%BA%8B%E5%85%B8</content>
+
+	<effect name='all' runtime='20000' duration='100%'>
+        <effect name='scroll in out up' offset="0%" duration="14%">
+			<init>
+				<x>CX</x>
+				<y>CY</y>
+			</init>
+            <effect name='scroll in up'  offset='0%' duration='40%'>
+				<props><y>0</y></props>
+			</effect>
+
+            <effect name='scroll out up' offset='60%' duration='40%'>
+				<props><y>-H</y></props>
+			</effect>
+        </effect>
+
+        <effect name='scroll in out left' offset="15%" duration="34%">
+			<init>
+				<x>CX</x>
+				<y>0</y>
+				<fontSize>4</fontSize>
+			</init>
+            <effect name='scroll in left'  offset='0%' duration='40%'>
+				<props><x>0</x></props>
+			</effect>
+            <effect name='scroll out left' offset='60%' duration='40%'>
+				<props>
+					<x>-W</x>
+					<fontSize>20</fontSize>
+				</props>
+				<ease>easeRoundCos</ease>
+			</effect>
+        </effect>
+
+        <effect name='scroll in out down' offset="50%" duration="14%">
+			<init>
+				<x>0</x>
+				<y>-H</y>
+			</init>
+            <effect name='scroll in down'  offset='0%' duration='40%'>
+				<props>
+					<y>0</y>
+					<fontSize>4</fontSize>
+				</props>
+			</effect>
+
+            <effect name='scroll out down' offset='60%' duration='40%'>
+				<props><y>CY</y></props>
+			</effect>
+			<effect name='skew left' offset='60%' duration='40%'>
+				<props><x>-CX</x></props>
+				<ease>easeOutBounce</ease>
+			</effect>
+        </effect>
+
+        <effect name='scroll in out right' offset="65%" duration="34%">
+			<init>
+				<x>-CX</x>
+				<y>0</y>
+			</init>
+            <effect name='scroll in right'  offset='0%' duration='40%'>
+				<props><x>0</x></props>
+			</effect>
+            <effect name='scroll out right' offset='60%' duration='40%'>
+				<props><x>CX</x></props>
+			</effect>
+        </effect>
+	</effect>
+  
+    <window x="10" y="5" z="2" width="100" height="100" offset="1000" duration="60000">
+
+        <content>images/bicycle.png</content>
+
+		<effect name='warble' runtime='9500' gap='500' repeat='-1' duration='100%'>
+			<init><opacity>0</opacity></init>
+			<effect name='fadein' offset='0%' duration='35%'>
+				<ease>easeInCubic</ease>
+				<props><opacity>1</opacity></props>
+			</effect>
+	        <effect name='elemGrow' offset="5%" duration="40%">
+				<ease>easeInBounce</ease>
+				<props><W>W*2</W><H>H*2</H></props>
+			</effect>
+	        <effect name='elemShrink' offset='55%' duration='40%'>
+	            <ease>easeOutBounce</ease>
+				<props><W>W/2</W><H>H/2</H></props>
+			</effect>
+			<effect name='fadeout' offset='65%' duration='35%'>
+				<ease>easeOutCubic</ease>
+				<props><opacity>0</opacity></props>
+			</effect>
+		</effect>
+	</window>
+
+    <window x="-1" y="-1" z="5" width="130" height="95" margin="1" offset="7000" duration="900000">
+		<opacity>0</opacity>
+        <content>images/bart logo.png</content>
+
+		<effect name='huge' offset='0' runtime='10000' gap='2000' duration='100%'>
+			<init><x>-1</x><y>-1</y></init>
+			<effect name='fadein' offset='0%' duration='20%'>
+				<init><opacity>0</opacity></init>
+				<props><opacity>1</opacity></props>
+				<ease>easeOutBounce</ease>
+			</effect>
+			<effect name='growhuge' offset='10%' duration='30%'>
+				<props>
+					<W>W*5</W>
+					<H>H*5</H>
+				</props>
+				<ease>easeInBounce</ease>
+			</effect>
+			<effect name='shrinksmall' offset='60%' duration='30%'>
+				<props>
+					<W>W/5</W>
+					<H>H/5</H>
+				</props>
+				<ease>easeOutBounce</ease>
+			</effect>
+			<effect name='fadeout' offset='80%' duration='20%'>
+				<props><opacity>0</opacity></props>
+				<ease>easeInBounce</ease>
+			</effect>
+		</effect>	
+
+        <window x="-15" y="-15" z="1" width="5" height="5" offset="25%" duration="50%">
+            <color bg="purple" />
+        </window>
+    </window>
+
+    <window x="110" y="5" z="3" width="80" height="40" margin="1" offset="30000" duration="180000">
+        <color bg="red" fg="DarkGreen" />
+        <border width="1" color="#FFFFFF" margin="0" />
+
+        <content>boxA</content>
+    </window>
+
+</window>

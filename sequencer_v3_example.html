@@ -1,0 +1,68 @@
+<html>
+	<head>
+		<script type=text/javascript src='js/jquery.js'></script>
+		<script type=text/javascript src='js/easing.js'></script>
+		<script type=text/javascript src='js/timer.js'></script>
+
+		<script type=text/javascript>
+            var started = false;
+            function startit ()  { 
+                started = (new Date()).getTime(); 
+                document.write('<' + this._depth + '> Started at ' + started + '<br />');
+                return true; 
+            }
+            function finishit () {
+                finished= (new Date()).getTime(); 
+                document.write('<' + this._depth + '> Finished.  Ran from ' + started + ' to ' + finished + '<br />');
+                document.write('  Elapsed: ' + (finished - started) + '<br />');
+                return true; 
+            }
+			function check (msg) {
+				return function (seq, sch) {
+				    var m = msg;
+                    var now = (new Date()).getTime();
+                    if (seq) m += '  (elapsed: ' + (now - seq._started) + ', position: ' + seq._pos + ')';
+					document.write('[' + (now - started) + ']<' + seq._depth + '>: ' + m + '<br />');
+				}
+			}
+			function init () {
+				var seq = new Scheduler.Sequence(0, 15000);
+				 seq
+                    .first(startit)
+                    .finally(finishit)
+                    .from('35%', '-30%').repeat(check('40-60 repeat')).also()
+                    .at('10%')
+                      .do(check('AT 1:1'))
+                      .and(check('AT 1:2'))
+                    .also()
+                      .at('500', check('AT 1:3[first]'))
+                    .then()
+                      .at('+1000', check('AT 1:3'))
+                    .then()
+                      .from('+500', '8000') // --> 
+                        .first(check('FROM -> FIRST 1:4'))
+                        .repeat(check('FROM -> REPEAT 2:2'))
+                      .and()  // <--
+                    .at('+1000')
+                      .do(check('FROM -> AT 2:1'))
+                    .also()
+                      .finally(check('FROM -> FINALLY 1:4'));
+    /*
+					.at('15%', check('AT 1:2'))
+					.then('15%', '50%')
+						.at('5%', check('AT 1.2:1'))
+						.during('0', '100%', check('DURING 1.2:3'))
+                    .also()
+                    .during('30%', '20%', check('DURING 1:3'))
+                    .initially(startit)
+                    .subsequently(finishit); //check('completed'));
+    */
+				seq.enable();
+						
+			}
+		</script>
+	</head>
+	<body onLoad='init()'>
+
+	</body>
+</html>

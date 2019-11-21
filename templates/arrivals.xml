@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window name='arrivals' x="0" y="0" z="1" width="100%" height="99%" margin="0" runtime='10000'> 
+    <color fg='white' bg='black' />
+	<font>
+		<family>fantasy</family>
+		<size>4em</size>
+		<style>bolder</style>
+	</font>
+	<border bottomWidth='4px' bottomColor='rgb(47, 128, 198)' bottomStyle='solid' />
+
+	<window name='eta[0]' x='0' y='0' width='100%' height='50%' align='center' valign='middle'>
+	    <content type='tmpl'>templates/etaLine.xml</content>
+	</window>
+
+	<window name='eta[1]' x='0' y='50%' width='100%' height='50%' align='center' valign='middle'>
+	    <content type='tmpl' >templates/etaLine.xml</content>
+	</window>
+
+</window>

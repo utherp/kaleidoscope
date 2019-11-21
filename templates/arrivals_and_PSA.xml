@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window name='arrivals_and_PSA' x="0" y="0" z="1" width="100%" height="100%" margin="0"> 
+    <font size='14pt' />
+    <color bg="black" fg="White" />
+
+    <window name='eta_box' z='10' width='100%' height='40%'>
+        <content type='tmpl'>templates/arrivals.xml</content>
+    </window>
+
+    <window name='PSA' y='42%' x='0' width='78%' height='56%' align='left' valign='middle'>
+        <content type='tmpl'>templates/PSA.xml</content>
+    </window>
+
+    <window name='logo' x='-10' y='50%' height='40%'>
+        <content height='100%' width='100%' align='center' valign='middle'>images/bart logo.png</content>
+        <effect name='shrink logo' offset='0' duration='3000'>
+            <init>
+                <W>W*2</W>
+                <H>H*2</H>
+            </init>
+            <props>
+                <W>W/2</W>
+                <H>H/2</H>
+            </props>
+            <ease>easeOutBounce</ease>
+        </effect>
+    </window>
+
+</window>

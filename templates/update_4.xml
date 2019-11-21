@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list>
+	<update name='eta[0].line'>orange</update>
+	<update name='eta[0].destination'>RICHMOND</update>
+	<update name='eta[0].cars'>1</update>
+	<update name='eta[0].times.time[2]'>16,</update>
+	<update name='eta[0].times.time[1]'>31,</update>
+	<update name='eta[0].times.time[0]'>46</update>
+
+	<update name='eta[1].line'>yellow</update>
+	<update name='eta[1].destination'>SF AIRPORT</update>
+	<update name='eta[1].cars'>10</update>
+	<update name='eta[1].times.time[2]'>4,</update>
+	<update name='eta[1].times.time[1]'>19,</update>
+	<update name='eta[1].times.time[0]'>34</update>
+</list>
